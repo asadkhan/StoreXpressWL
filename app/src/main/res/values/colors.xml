@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f70000</color>
+    <color name="colorPrimaryDark">#db0000</color>
+    <color name="colorAccent">#ffffff</color>
+    <color name="colordailog">#000000</color>
+    <color name="black">#000000</color>
+    <color name="drawer_bg">#facf11</color>
+    <color name="darkGrey">#545454</color>
+    <color name="Divider">#b2b2b2</color>
+    <color name="light_grey">#D9D9D9</color>
+    <color name="grey_bg">#F7F5F5</color>
+    <color name="transparent">#D9D9D9</color>
+    <color name="stock_green">#2F7F00</color>
+</resources>

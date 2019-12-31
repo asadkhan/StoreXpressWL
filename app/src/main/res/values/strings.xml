@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Your App</string>
+    <string name="strike_line">Don\'t have an account?</string>
+    <string name="pass">Password</string>
+    <string name="checkout_add">141, 3rd Street, Off Khayaban-e-Rahat,\nPhase VI, DHA, Karachi</string>
+    <string name="action_settings">Settings</string>
+    <string name="pro_price_before">100000</string>
+    <string name="pro_price_after"><strike>100000</strike></string>
+
+
+    <string name="msg_registration_successfull"><strike>Registration successfull kindly check you inbox for account activation </strike></string>
+    <string name="msg_registration_failed"><strike>Registration Failed! </strike></string>
+
+    <string name="msg_device_info_successfull"><strike>Device Info Updated successfully </strike></string>
+    <string name="msg_device_info_failed"><strike>Device Info Update Failed! </strike></string>
+
+    <string name="msg_pick_at_nine"><strike>Last Pickup time for your order is 9:30PM</strike></string>
+    <string name="msg_pick_at_tommorow"><strike>Order will be ready by tomorrow </strike></string>
+    <string name="Open"><strike>Open </strike></string>
+    <string name="Close"><strike>Close </strike></string>
+    <string name="pro_desc"><strike>Lindt Lindor 60%\nDark Choclate - 200grm</strike></string>
+
+    <string name="title_activity_test">test</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="msg_add_to_car">Item Added To Cart</string>
+    <string name="checkout_opt">American Garden Jalapeno Paper 454g x 1 American Garden Jalapeno</string>
+    <string name="checkout_opt_price">Rs 100000</string>
+    <string name="my_order_reorder_opt">1. Loreum Ipsum Dolor\nRs. 645</string>
+    <string name="about_text">From food to toiletries to household goods, cosmetics and much more, The Agha’s Supermarket is a one-stop-shop for all your daily needs and those little treats that make your day special. So just take your trolley and fill up on the good things in life.
+\n\nGourmet cheese, exotic chocolates, aisles full of all kinds of delicacies- that’s Agha’s Supermarket. Karachi’s leading retail giant, Agha’s Supermarket is a world of indulgence and day-to-day delights.</string>
+
+</resources>

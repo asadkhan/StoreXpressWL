@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f5f5"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dip"
+                android:text="ALL CATEGORIES"
+                android:textColor="@color/darkGrey"
+                android:textSize="24sp" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dip"
+                android:layout_marginTop="10dip"
+                android:background="@color/Divider"
+                android:clickable="false" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-5dip"
+                android:background="@drawable/shadow"
+                android:drawableLeft="@mipmap/featured"
+                android:drawablePadding="15dip"
+                android:drawableRight="@mipmap/next"
+                android:freezesText="false"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:text="Featured" />
+
+            <Button
+                android:id="@+id/button34"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-5dip"
+                android:background="@drawable/shadow"
+                android:drawableLeft="@mipmap/grocery"
+                android:drawablePadding="15dip"
+                android:drawableRight="@mipmap/next"
+                android:freezesText="false"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:text="Grocery" />
+
+            <Button
+                android:id="@+id/button33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-5dip"
+                android:background="@drawable/shadow"
+                android:drawableLeft="@mipmap/frozen"
+                android:drawablePadding="15dip"
+                android:drawableRight="@mipmap/next"
+                android:freezesText="false"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:text="Frozen Food" />
+
+            <Button
+                android:id="@+id/button32"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-5dip"
+                android:background="@drawable/shadow"
+                android:drawableLeft="@mipmap/bakery"
+                android:drawablePadding="15dip"
+                android:drawableRight="@mipmap/next"
+                android:freezesText="false"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:text="Bakery &amp; Dairy" />
+
+            <Button
+                android:id="@+id/button31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-5dip"
+                android:background="@drawable/shadow"
+                android:drawableLeft="@mipmap/books"
+                android:drawablePadding="15dip"
+                android:drawableRight="@mipmap/next"
+                android:freezesText="false"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:text="Books" />
+
+            <Button
+                android:id="@+id/button30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-5dip"
+                android:background="@drawable/shadow"
+                android:drawableLeft="@mipmap/beauty"
+                android:drawablePadding="15dip"
+                android:drawableRight="@mipmap/next"
+                android:freezesText="false"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:text="Beauty &amp; Health" />
+
+            <Button
+                android:id="@+id/button29"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-5dip"
+                android:background="@drawable/shadow"
+                android:drawableLeft="@mipmap/movies"
+                android:drawablePadding="15dip"
+                android:drawableRight="@mipmap/next"
+                android:freezesText="false"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:text="Movie &amp; Games" />
+
+            <Button
+                android:id="@+id/button28"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-5dip"
+                android:background="@drawable/shadow"
+                android:drawableLeft="@mipmap/baby"
+                android:drawablePadding="15dip"
+                android:drawableRight="@mipmap/next"
+                android:freezesText="false"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:text="Baby &amp; Toddlers" />
+
+            <Button
+                android:id="@+id/button27"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-5dip"
+                android:background="@drawable/shadow"
+                android:drawableLeft="@mipmap/household"
+                android:drawablePadding="15dip"
+                android:drawableRight="@mipmap/next"
+                android:freezesText="false"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:text="Household" />
+
+            <Button
+                android:id="@+id/button26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-5dip"
+                android:background="@drawable/shadow"
+                android:drawableLeft="@mipmap/featured"
+                android:drawablePadding="15dip"
+                android:drawableRight="@mipmap/next"
+                android:freezesText="false"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:text="Featured" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
