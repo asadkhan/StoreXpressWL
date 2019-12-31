@@ -55,15 +55,42 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/checkout_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/checkout_footer"
+        android:layout_below="@+id/checkout_header">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_checkoutItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/checkout_footer"
+        android:layout_below="@+id/checkout_header"
+        android:fillViewport="true"
+        android:visibility="gone">
+
+
+    </ScrollView>
+
+    <RelativeLayout
         android:id="@+id/checkout_footer"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="260dp"
         android:layout_alignParentBottom="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/proceed_btn"
+            android:layout_above="@+id/option_radio"
             android:layout_alignParentLeft="false"
             android:layout_marginBottom="10dip"
             android:background="#e8e8e8"
@@ -131,71 +158,27 @@
                 android:paddingTop="10dip"
                 android:text=""
                 android:textColor="#000000"
-                android:textSize="18sp"
-                android:visibility="gone" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/proceed_btn"
+            android:id="@+id/option_radio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_next"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginStart="40dp"
-                android:textAllCaps="false"
-                android:background="@drawable/border_radius_red"
-                android:text="Proceed To Pickup"
-                android:textColor="@color/colorAccent"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </RelativeLayout>
-
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@+id/checkout_footer"
-        android:layout_below="@+id/checkout_header"
-        android:fillViewport="true">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_checkoutItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
-    </ScrollView>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_above="@+id/proceed_btn"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="bottom|center"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:visibility="invisible">
+                    android:orientation="horizontal">
 
                     <RadioGroup
                         android:id="@+id/radioOrderType"
@@ -283,5 +266,36 @@
 
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/proceed_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
+                android:background="@drawable/border_radius_red"
+                android:text="NEXT"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+
     </ScrollView>
+
+
 </RelativeLayout>
