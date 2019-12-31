@@ -263,6 +263,7 @@
                     android:layout_marginBottom="15dip"
                     android:gravity="center"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     android:weightSum="1">
 
                     <RadioButton
@@ -302,7 +303,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Add a new Debit / Creadit Card >"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/colorPrimary"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
