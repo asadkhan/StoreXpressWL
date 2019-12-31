@@ -70,7 +70,7 @@ public RadioButton rBtndelivery,rBtnPickUp;
         rBtndelivery = (RadioButton) findViewById(R.id.radioDelivery);
         rBtndelivery.setOnCheckedChangeListener(this);
         rBtnPickUp = (RadioButton) findViewById(R.id.radioPickUp);
-
+        rBtnPickUp.setChecked(true);
         lbl_pickup_msg=(TextView) findViewById(R.id.lbl_pickup_msg);
 
         lbl_pickup_warning=(RelativeLayout) findViewById(R.id.lbl_pickup_warning);
@@ -133,7 +133,7 @@ public RadioButton rBtndelivery,rBtnPickUp;
             if (buttonView.getId() == R.id.radioDelivery) {
                 rBtndelivery.setChecked(true);
                 rBtnPickUp.setChecked(false);
-                OrderRequest.OrderType=1;
+                OrderRequest.OrderType=2;
 
             }
             if (buttonView.getId() == R.id.radioPickUp) {
@@ -164,7 +164,7 @@ public RadioButton rBtndelivery,rBtnPickUp;
                 }
                 else if(OrderRequest.OrderType==2){
 
-                    PlaceOrderDelivery();
+                   // PlaceOrderDelivery();
 
                 }
             }
