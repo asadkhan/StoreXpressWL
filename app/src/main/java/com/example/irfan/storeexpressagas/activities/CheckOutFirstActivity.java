@@ -165,7 +165,7 @@ public RadioButton rBtndelivery,rBtnPickUp;
                 else if(OrderRequest.OrderType==2){
 
                    // PlaceOrderDelivery();
-
+                    PlaceOrderDelivery();
                 }
             }
 
