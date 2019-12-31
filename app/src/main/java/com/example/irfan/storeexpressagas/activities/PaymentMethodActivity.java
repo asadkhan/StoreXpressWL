@@ -1,5 +1,6 @@
 package com.example.irfan.storeexpressagas.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.MenuItemCompat;
@@ -43,17 +44,21 @@ public Button btnFinish;
     public AddressListAdapter mAdapter;
 public List<AddressResponse.Value> adddressLst = new ArrayList<>();
 
-    public TextView tv;
+    public TextView tv,txt_add_address;
     public ImageView i;
+
+    private static final int ADD_ADDRESS_ACTIVITY_REQUEST_CODE_DLIVERY = 1;
 
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_method);
+
+
         btnFinish=(Button)findViewById(R.id.btn_finish);
         btnFinish.setOnClickListener(this);
-
-
+    txt_add_address =(TextView) findViewById(R.id.txt_add_address);
+    txt_add_address.setOnClickListener(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_payment_method);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_payment_method);
@@ -66,7 +71,7 @@ public List<AddressResponse.Value> adddressLst = new ArrayList<>();
         navigationView.setNavigationItemSelectedListener(this);
     recyclerViewAdress = (RecyclerView) findViewById(R.id.recycler_view_adresses);
 
-    mAdapter = new AddressListAdapter(this.adddressLst);
+    mAdapter = new AddressListAdapter(this.adddressLst,this);
     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
 
     // RecyclerView.ItemDecoration itemDecoration =
@@ -88,6 +93,13 @@ public List<AddressResponse.Value> adddressLst = new ArrayList<>();
         Log.d("test","Next click");
         Log.d("test",String.valueOf(OrderRequest.OrderType));
         switch (v.getId()) {
+
+            case R.id.txt_add_address:
+                Intent intent = new Intent(this, AddAddressDailog.class);
+                startActivityForResult(intent, ADD_ADDRESS_ACTIVITY_REQUEST_CODE_DLIVERY);
+                break;
+
+
             case R.id.btn_finish:
                 openActivity(OrdersActivity.class);
                     finish();
@@ -109,6 +121,27 @@ public List<AddressResponse.Value> adddressLst = new ArrayList<>();
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // check that it is the SecondActivity with an OK result
+        if (requestCode == ADD_ADDRESS_ACTIVITY_REQUEST_CODE_DLIVERY) {
+            if (resultCode == RESULT_OK) { // Activity.RESULT_OK
+
+                // get String data from Intent
+                String returnString = data.getStringExtra("Added");
+
+                // set text view with string
+                int added=Integer.valueOf(returnString);
+
+                if(added==1){
+
+                    getAddresses();
+                }
+            }
+        }
+    }
 
     public void getAddresses(){
         Log.d("test","place oder call");

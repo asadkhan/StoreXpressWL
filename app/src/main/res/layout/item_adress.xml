@@ -14,7 +14,9 @@
         android:orientation="horizontal"
         android:weightSum="1">
 
-        <RadioButton
+
+
+       <!-- <RadioButton
             android:id="@+id/radio_address"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -22,7 +24,29 @@
             android:buttonTint="#ff0000"
             android:checked="false"
             android:cursorVisible="false"
-            android:paddingLeft="10dip" />
+            android:paddingLeft="10dip" />-->
+
+
+
+        <RadioGroup
+            android:id="@+id/radioButton_custom"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+
+            android:paddingRight="5dp">
+
+            <RadioButton
+                android:id="@+id/radio_address"
+                android:buttonTint="#ff0000"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </RadioGroup>
 
         <TextView
             android:id="@+id/txt_address"
@@ -38,12 +62,12 @@
             android:textStyle="normal" />
 
         <TextView
-            android:id="@+id/txt_edit"
+            android:id="@+id/txt_remove"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
             android:gravity="end"
-            android:text="Edit"
+            android:text="Remove"
             android:textColor="@color/colorPrimary"
             android:textSize="12sp" />
 
