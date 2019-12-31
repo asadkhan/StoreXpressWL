@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/StoreExpress.iml" filepath="$PROJECT_DIR$/StoreExpress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StoreXpressWL.iml" filepath="$PROJECT_DIR$/StoreXpressWL.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
