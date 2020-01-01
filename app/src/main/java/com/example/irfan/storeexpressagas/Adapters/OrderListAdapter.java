@@ -31,7 +31,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.List
     private List<CustomerOrderResponse.Value> orders;
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
 
-        public TextView txt_order_date,txt_order_id,txt_order_details_btn,txt_order_status;
+        public TextView txt_order_date,txt_order_id,txt_order_details_btn,txt_order_status,txt_type;
 
 
         private String mItem;
@@ -44,6 +44,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.List
             txt_order_id = (TextView) view.findViewById(R.id.txt_order_id);
             txt_order_details_btn = (TextView) view.findViewById(R.id.txt_order_details_btn);
             txt_order_status = (TextView) view.findViewById(R.id.txt_order_status);
+            txt_type = (TextView) view.findViewById(R.id.txt_type);
 
             txt_order_details_btn.setOnClickListener(this);
 
@@ -101,7 +102,16 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.List
         holder.txt_order_date.setText(order.getOrderDate());
         holder.txt_order_id.setText(order.getOrderId().toString());
         holder.txt_order_status.setText(order.getOrderStatus());
+        if(order.getOrderType()==1){
 
+            holder.txt_type.setText("| Pickup");
+
+        }
+        else{
+
+            holder.txt_type.setText("| Delivery");
+
+        }
 
     }
 

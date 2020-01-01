@@ -34,7 +34,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/txt_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="| Pickup"
