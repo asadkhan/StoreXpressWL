@@ -111,7 +111,7 @@
                     android:weightSum="1">
 
                     <RadioButton
-                        android:id="@+id/radioButton3"
+                        android:id="@+id/radio_cod"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.05"
@@ -203,7 +203,7 @@
                     android:layout_width="300dip"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border_radius_red"
-                    android:text="FINISH"
+                    android:text="PLACE ORDER"
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp" />
             </LinearLayout>

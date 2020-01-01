@@ -20,6 +20,7 @@ import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.extras.Auth;
 import com.example.irfan.storeexpressagas.models.AddressResponse;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
+import com.example.irfan.storeexpressagas.models.OrderRequest;
 import com.example.irfan.storeexpressagas.models.ProductReqResponse;
 import com.example.irfan.storeexpressagas.network.RestClient;
 import com.google.gson.Gson;
@@ -69,6 +70,8 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
                             Toast.LENGTH_LONG).show();
                     lastSelectedPosition = getAdapterPosition();
                     notifyDataSetChanged();
+
+                    OrderRequest.Address=obj.getAddress();
 
 
                     break;

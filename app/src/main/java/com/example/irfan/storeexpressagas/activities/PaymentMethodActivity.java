@@ -15,8 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.irfan.storeexpressagas.Adapters.AddressListAdapter;
 import com.example.irfan.storeexpressagas.Adapters.CartItemListAdapter;
@@ -30,7 +32,9 @@ import com.example.irfan.storeexpressagas.models.Cart;
 import com.example.irfan.storeexpressagas.models.CartRequest;
 import com.example.irfan.storeexpressagas.models.GResponse;
 import com.example.irfan.storeexpressagas.models.ItemVM;
+import com.example.irfan.storeexpressagas.models.OrderModel;
 import com.example.irfan.storeexpressagas.models.OrderRequest;
+import com.example.irfan.storeexpressagas.models.OrderResponse;
 import com.example.irfan.storeexpressagas.network.RestClient;
 import com.google.gson.Gson;
 
@@ -39,6 +43,7 @@ import java.util.List;
 
 public class PaymentMethodActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 public Button btnFinish;
+public RadioButton radio_cod;
     public RecyclerView recyclerViewAdress;
 
     public AddressListAdapter mAdapter;
@@ -54,7 +59,7 @@ public List<AddressResponse.Value> adddressLst = new ArrayList<>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_method);
 
-
+    radio_cod=(RadioButton) findViewById(R.id.radio_cod);
         btnFinish=(Button)findViewById(R.id.btn_finish);
         btnFinish.setOnClickListener(this);
     txt_add_address =(TextView) findViewById(R.id.txt_add_address);
@@ -73,7 +78,7 @@ public List<AddressResponse.Value> adddressLst = new ArrayList<>();
 
     mAdapter = new AddressListAdapter(this.adddressLst,this);
     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-
+    radio_cod.setChecked(true);
     // RecyclerView.ItemDecoration itemDecoration =
     //       new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
     //recyclerViewCart.addItemDecoration(itemDecoration);
@@ -83,7 +88,16 @@ public List<AddressResponse.Value> adddressLst = new ArrayList<>();
     //recyclerView.setItemAnimator(new DefaultItemAnimator());
     recyclerViewAdress.setAdapter(this.mAdapter);
     HideShowLogout(navigationView);
+
+
+    OrderRequest.OrderType=2;
+    OrderRequest.PaymentMeathod=1;
+    OrderRequest.PaymentStatus=1;
+    OrderRequest.Address="";
+
     getAddresses();
+
+
     }
 
 
@@ -101,8 +115,10 @@ public List<AddressResponse.Value> adddressLst = new ArrayList<>();
 
 
             case R.id.btn_finish:
-                openActivity(OrdersActivity.class);
-                    finish();
+                //openActivity(OrdersActivity.class);
+                  //  finish();
+                placeDiliveryOrder();
+
                 break;
             case R.id.actionbar_notifcation_img:
                 openActivity(CartActivity.class);
@@ -153,6 +169,7 @@ public List<AddressResponse.Value> adddressLst = new ArrayList<>();
 
                 if(!response.getIserror()) {
                      adddressLst.clear();
+                    OrderRequest.Address="";
                     Gson gson = new Gson();
                     String Reslog = gson.toJson(response);
                     Log.d("test", Reslog);
@@ -285,6 +302,137 @@ public List<AddressResponse.Value> adddressLst = new ArrayList<>();
         i.setOnClickListener(this);
         tv.setOnClickListener(this);
         return super.onCreateOptionsMenu(menu);
+    }
+
+
+    public void placeDiliveryOrder(){
+
+    if( OrderRequest.Address=="" ||  OrderRequest.Address.isEmpty()){
+
+        Toast.makeText(this,"Please Select Address",
+                Toast.LENGTH_LONG).show();
+
+return;
+    }
+
+
+
+
+
+
+        showProgress();
+
+        List<ItemVM> itemlst = new ArrayList<>();
+        List<Cart> cartItems = Cart.getCart(this);
+
+
+        if(cartItems.size() <1){
+
+            Toast.makeText(this,"Cart is empty!",
+                    Toast.LENGTH_LONG).show();
+
+            return;
+        }
+
+
+        //  Log.d("test",Auth.getToken(c));
+
+        for(Cart obj : cartItems){
+            ItemVM Iobj= new ItemVM();
+            Iobj.Id=obj.ItemID;
+            Iobj.Quantity=obj.ItemQty;
+            itemlst.add(Iobj);
+        }
+        CartRequest cart = new CartRequest();
+        cart.items=itemlst;
+
+        Gson gson = new Gson();
+        String Reslog= gson.toJson(cart);
+        Log.d("testme", Reslog);
+
+        RestClient.getAuthAdapterToekn(Auth.getToken(this)).test(cart).enqueue(new GeneralCallBack<GResponse>(this) {
+            @Override
+            public void onSuccess(GResponse response) {
+
+                if(!response.getIserror()) {
+
+                    Gson gson = new Gson();
+                    String Reslog = gson.toJson(response);
+                    Log.d("test", Reslog);
+
+                    placeOrderToServer();
+
+                }
+                hideProgress();
+
+
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                Log.d("test","failed");
+
+            }
+
+
+
+        });
+
+
+    }
+
+
+    public void placeOrderToServer(){
+
+        showProgress();
+        OrderModel obj = new OrderModel();
+        obj.OrderType=2;
+        obj.PaymentMeathod=1;
+        obj.PaymentStatus=1;
+        obj.Address=OrderRequest.Address;
+
+        Gson gson = new Gson();
+        String Reslog= gson.toJson(obj);
+        Log.d("testme", Reslog);
+
+        RestClient.getAuthAdapterToekn(Auth.getToken(this)).placeORder(obj).enqueue(new GeneralCallBack<OrderResponse>(this) {
+            @Override
+            public void onSuccess(OrderResponse response) {
+                Gson gson = new Gson();
+                String Reslog= gson.toJson(response);
+                Log.d("testme", Reslog);
+
+                if(!response.getIserror()){
+                    Cart.ClearCart(PaymentMethodActivity.this);
+                    if(response.getValue().getOrderType()==1) {
+
+
+                        OStatusPickupActivity.orderid=response.getValue().getOrderId();
+                        openActivity(OStatusPickupActivity.class);
+                    }
+                }
+
+                hideProgress();
+
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                Log.d("test","failed");
+
+            }
+
+
+
+        });
     }
 
 }

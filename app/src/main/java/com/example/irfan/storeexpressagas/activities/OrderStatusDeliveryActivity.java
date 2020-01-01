@@ -34,7 +34,7 @@ public Button btnOders;
     public CheckOutCartItemAdapter mAdapterCheckoutitem;
 
     public List<Cart> cartItemList = new ArrayList<>();
-
+    public static int orderid;
     public TextView tv;
     public ImageView i;
 
