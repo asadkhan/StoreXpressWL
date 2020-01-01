@@ -5,7 +5,7 @@
             android:title="My Store" />
         <item android:id="@+id/menu_profile" android:icon="@mipmap/profile"
             android:title="Profile" />
-        <item android:id="@+id/menu_shopping" android:icon="@mipmap/profile"
+        <item android:id="@+id/menu_shopping" android:icon="@mipmap/shop_list"
             android:title="Shopping List" />
 
 

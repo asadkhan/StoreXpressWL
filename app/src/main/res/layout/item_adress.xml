@@ -61,15 +61,21 @@
             android:textSize="12sp"
             android:textStyle="normal" />
 
-        <TextView
-            android:id="@+id/txt_remove"
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="0.1"
             android:gravity="end"
-            android:text="Remove"
-            android:textColor="@color/colorPrimary"
-            android:textSize="12sp" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_remove"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="right|center_vertical|center_horizontal|center|end"
+                android:background="@mipmap/list_delete"
+                android:backgroundTint="@color/colorPrimary" />
+        </LinearLayout>
 
     </LinearLayout>
 
