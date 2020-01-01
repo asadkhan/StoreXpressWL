@@ -56,7 +56,7 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/textView36"
+                        android:id="@+id/txt_order_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dip"
@@ -121,30 +121,7 @@
                     android:layout_height="match_parent" />
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
 
-                    <TextView
-                        android:id="@+id/textView39"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2.5"
-                        android:text="American Garden Jalapeno\nPaper 473ml x 1"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/textView44"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="Rs. 355"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -172,7 +149,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView41"
+                    android:id="@+id/txt_total_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -224,7 +201,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView360"
+                        android:id="@+id/txt_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Out for Delivery"
@@ -247,7 +224,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView383"
+                        android:id="@+id/txt_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dip"
@@ -255,7 +232,7 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/textView379"
+                        android:id="@+id/txt_order_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dip"

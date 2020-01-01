@@ -19,10 +19,15 @@ import android.widget.TextView;
 
 import com.example.irfan.storeexpressagas.Adapters.CheckOutCartItemAdapter;
 import com.example.irfan.storeexpressagas.R;
+import com.example.irfan.storeexpressagas.abstract_classess.GeneralCallBack;
 import com.example.irfan.storeexpressagas.baseclasses.BaseActivity;
 import com.example.irfan.storeexpressagas.extras.MenuHandler;
 import com.example.irfan.storeexpressagas.models.Cart;
+import com.example.irfan.storeexpressagas.models.DeliveryOrderDeatilResponse;
 import com.example.irfan.storeexpressagas.models.OrderRequest;
+import com.example.irfan.storeexpressagas.models.PickupOrderDeatilResponse;
+import com.example.irfan.storeexpressagas.network.RestClient;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +40,9 @@ public Button btnOders;
 
     public List<Cart> cartItemList = new ArrayList<>();
     public static int orderid;
-    public TextView tv;
+    public TextView tv, txt_order_id,txt_total_price,txt_status,txt_date,txt_order_time;
+
+
     public ImageView i;
 
     @Override
@@ -45,6 +52,14 @@ public Button btnOders;
 
         btnOders=(Button) findViewById(R.id.btn_orders);
         btnOders.setOnClickListener(this);
+
+        txt_order_id =(TextView) findViewById(R.id.txt_order_id);
+        txt_total_price =(TextView) findViewById(R.id.txt_total_price);
+        txt_status =(TextView) findViewById(R.id.txt_status);
+        txt_date =(TextView) findViewById(R.id.txt_date);
+        txt_order_time =(TextView) findViewById(R.id.txt_order_time);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_osd);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_osd);
@@ -70,7 +85,7 @@ public Button btnOders;
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerViewCheckoutItem.setAdapter(this.mAdapterCheckoutitem);
         HideShowLogout(navigationView);
-        getCart();
+        getOrderDetails();
 
     }
 
@@ -95,6 +110,70 @@ public Button btnOders;
 
         mAdapterCheckoutitem.notifyDataSetChanged();
     }
+
+
+
+
+    public void getOrderDetails(){
+
+        showProgress();
+
+        Log.d("testme", String.valueOf(this.orderid));
+        RestClient.getAuthAdapter().getDeliveryOrderDetails(this.orderid).enqueue(new GeneralCallBack<DeliveryOrderDeatilResponse>(this) {
+            @Override
+            public void onSuccess(DeliveryOrderDeatilResponse response) {
+                Gson gson = new Gson();
+                String Reslog= gson.toJson(response);
+                Log.d("testme", Reslog);
+
+                if(!response.getIserror()){
+
+                    txt_order_id.setText(response.getValue().getOrderId().toString());
+                    txt_total_price.setText(txt_total_price.getText()+response.getValue().getTotalprice().toString());
+                    txt_status.setText(response.getValue().getOrderStatus().toString());
+                    txt_date.setText(response.getValue().getOrderDate().toString());
+                    txt_order_time.setText(response.getValue().getOrderTime().toString());
+
+
+                    cartItemList.clear();
+                    List<DeliveryOrderDeatilResponse.ItemsLst> cartlst=response.getValue().getItemsLst() ;
+                    for(DeliveryOrderDeatilResponse.ItemsLst obj : cartlst){
+
+                        Cart t = new Cart();
+                        t.ItemQty=obj.getItemQty();
+                        t.ItemID=obj.getItemId();
+                        // t.ItemImg=obj.getItemName();
+                        t.ItemPrice=Integer.valueOf(obj.getItemPrice());
+                        t.ItemName=obj.getItemName();
+
+                        cartItemList.add(t);
+
+                    }
+
+                    mAdapterCheckoutitem.notifyDataSetChanged();
+
+                }
+
+                hideProgress();
+
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                Log.d("testme",throwable.getMessage());
+
+            }
+
+
+
+        });
+    }
+
+
 
     @Override
     public void onClick(View v) {

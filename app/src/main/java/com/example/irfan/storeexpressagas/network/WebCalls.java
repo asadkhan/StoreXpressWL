@@ -4,6 +4,7 @@ import com.example.irfan.storeexpressagas.models.AddressResponse;
 import com.example.irfan.storeexpressagas.models.CartRequest;
 import com.example.irfan.storeexpressagas.models.CategoryResponse;
 import com.example.irfan.storeexpressagas.models.CustomerOrderResponse;
+import com.example.irfan.storeexpressagas.models.DeliveryOrderDeatilResponse;
 import com.example.irfan.storeexpressagas.models.DeviceInfoRequest;
 import com.example.irfan.storeexpressagas.models.DeviceInfoResponse;
 import com.example.irfan.storeexpressagas.models.FproductResponse;
@@ -42,6 +43,11 @@ public interface WebCalls {
 
     @GET(EndPoints.PICKUPORDERDETAILS)
     Call<PickupOrderDeatilResponse> getPickupOrderDetails(@Query("id") int id);
+
+    @GET(EndPoints.DELIVERYORDERDETAILS)
+    Call<DeliveryOrderDeatilResponse> getDeliveryOrderDetails(@Query("id") int id);
+
+
 
     @GET(EndPoints.CUSTOMERSORDERS)
     Call<CustomerOrderResponse> getCustomerOrders();

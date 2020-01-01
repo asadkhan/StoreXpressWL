@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.irfan.storeexpressagas.R;
 import com.example.irfan.storeexpressagas.activities.OStatusPickupActivity;
+import com.example.irfan.storeexpressagas.activities.OrderStatusDeliveryActivity;
 import com.example.irfan.storeexpressagas.activities.ProductActivity;
 import com.example.irfan.storeexpressagas.extras.ActivityManager;
 import com.example.irfan.storeexpressagas.extras.AdapterCallback;
@@ -54,9 +55,18 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.List
             CustomerOrderResponse.Value orderObj = orders.get(getPosition());
             switch (view.getId()) {
                 case R.id.txt_order_details_btn:
-                    OStatusPickupActivity.orderid=orderObj.getOrderId();
-                    ActivityManager.startActivity(view.getContext(),OStatusPickupActivity.class);
-                    break;
+
+                   if(orderObj.getOrderType()==1) {
+                       OStatusPickupActivity.orderid = orderObj.getOrderId();
+                       ActivityManager.startActivity(view.getContext(), OStatusPickupActivity.class);
+                       break;
+                   }
+                    if(orderObj.getOrderType()==2) {
+                        OrderStatusDeliveryActivity.orderid = orderObj.getOrderId();
+                        ActivityManager.startActivity(view.getContext(), OrderStatusDeliveryActivity.class);
+                        break;
+                    }
+
 
             }
 

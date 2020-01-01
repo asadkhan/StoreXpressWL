@@ -408,11 +408,11 @@ return;
 
                 if(!response.getIserror()){
                     Cart.ClearCart(PaymentMethodActivity.this);
-                    if(response.getValue().getOrderType()==1) {
+                    if(response.getValue().getOrderType()==2) {
 
 
-                        OStatusPickupActivity.orderid=response.getValue().getOrderId();
-                        openActivity(OStatusPickupActivity.class);
+                        OrderStatusDeliveryActivity.orderid=response.getValue().getOrderId();
+                        openActivity(OrderStatusDeliveryActivity.class);
                     }
                 }
 
